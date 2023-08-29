@@ -15,47 +15,20 @@ The mandatory part return a wrong line if we do a second call to `get_next_line(
 ## Mandatory part
 | File | Description |
 |------|-------------|
-|[get_next_line.c](https://github.com/alissonmarcs/Libft/blob/main/get_next_line.c)|Main logic|
-|[get_next_line_utils.c](https://github.com/alissonmarcs/Libft/blob/main/get_next_line_utils.c)|Helper functions|
-|[get_next_line.h](https://github.com/alissonmarcs/Libft/blob/main/get_next_line.h)|Interface for helper functions|
+|[get_next_line.c](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line.c)|Main logic|
+|[get_next_line_utils.c](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line_utils.c)|Helper functions|
+|[get_next_line.h](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line.h)|Interface for helper functions|
 
 ## Bonus part
 | File | Description |
 |------|-------------|
-|[get_next_line_bonus.c](https://github.com/alissonmarcs/Libft/blob/main/get_next_line_bonus.c)| Main logic |
-|[get_next_line_utils_bonus.c](https://github.com/alissonmarcs/Libft/blob/main/get_next_line_utils_bonus.c)| Helper functions |
-|[get_next_line_utils_bonus.h](https://github.com/alissonmarcs/Libft/blob/main/get_next_line_utils_bonus.h)| Interface for helper functions |
+|[get_next_line_bonus.c](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line_bonus.c)| Main logic |
+|[get_next_line_utils_bonus.c](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line_utils_bonus.c)| Helper functions |
+|[get_next_line_utils_bonus.h](https://github.com/alissonmarcs/get_next_line/blob/main/get_next_line_bonus.h)| Interface for helper functions |
 
 
 ## View it working
-
-```bash
-git clone https://github.com/alissonmarcs/get_next_line.git
-cd get_next_line/examples
-```
-
-To view mandatory example:
-```bash
-cc mandatory.c ../get_next_line.c ../get_next_line_utils.c
-./a.out
-```
-
-```
-hello world
-good morning
-```
-
-To view bonus example:
-```bash
-cc bonus.c ../get_next_line_bonus.c ../get_next_line_utils_bonus.c
-./a.out
-```
-
-```
-hello world
-i love cats
-good morning
-```
+Take a look in examples directory, [mandatory/bonus].c have comments indicating how to complile them.
 
 ## Little note
 The maximun grade is 125/100, but I get 112/100. This is because in my bonus files, my user name is deferent in 42 header, as I do its in my home :( (the lesson was learned). These files are the same as I send to the 42 intra.

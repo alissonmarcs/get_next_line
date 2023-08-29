@@ -27,3 +27,7 @@ int main()
 	close(file1);
 	close(file2);
 }
+
+// compile this file with the bonus files:
+// cc bonus.c ../get_next_line_bonus.c ../get_next_line_utils_bonus.c
+// ./a.out

@@ -20,3 +20,7 @@ int main()
 
 	close(file1);
 }
+
+// compile this file with the mandadoty files:
+// cc mandatory.c ../get_next_line.c ../get_next_line_utils.c
+// ./a.out
