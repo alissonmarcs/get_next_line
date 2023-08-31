@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alisson <alisson@student.42.fr>            +#+  +:+       +#+        */
+/*   By: almarcos <almarcos@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:59:30 by almarcos          #+#    #+#             */
-/*   Updated: 2023/08/26 21:56:46 by alisson          ###   ########.fr       */
+/*   Updated: 2023/08/31 13:58:39 by almarcos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ static char	*ft_update_buffer(char *buffer);
 
 char	*get_next_line(int fd)
 {
-	static char	*after_new_line_content;
 	char		*line;
+	static char	*after_new_line_content;
 
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
@@ -58,9 +58,9 @@ static char	*ft_read_file(int fd, char *buffer)
 
 static char	*ft_make_line(char *content)
 {
-	char	*new_line_position;
 	char	*line;
 	size_t	line_size;
+	char	*new_line_position;
 
 	if (content[0] == '\0')
 		return (NULL);
@@ -68,18 +68,18 @@ static char	*ft_make_line(char *content)
 	if (new_line_position == NULL)
 		return (ft_strdup(content));
 	else
-		line_size = (new_line_position - content) + 1;
-	line = malloc((line_size + 1) * sizeof(char));
+		line_size = (new_line_position - content) + 2;
+	line = malloc(line_size * sizeof(char));
 	if (line == NULL)
 		return (NULL);
-	ft_strlcpy(line, content, line_size + 1);
+	ft_strlcpy(line, content, line_size);
 	return (line);
 }
 
 static char	*ft_update_buffer(char *buffer)
 {
-	char	*new_line_position;
 	char	*new_buffer;
+	char	*new_line_position;
 
 	new_line_position = ft_strchr(buffer, '\n');
 	if (new_line_position == NULL)
