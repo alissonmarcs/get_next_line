@@ -12,7 +12,7 @@ int main()
 	char expected_result[100];
 	char *actual_result;
 
-	fd = open("../files/test_1.txt", O_RDONLY);
+	fd = open("./tests/project_test/files/test_1.txt", O_RDONLY);
 
 	printf("test_1.c tries to read test_1.txt: ");
 

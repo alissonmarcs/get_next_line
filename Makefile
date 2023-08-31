@@ -18,7 +18,7 @@ SOURCES = get_next_line.c get_next_line_utils.c
 
 OBJ = $(addprefix $(OBJ_FOLDER), $(SOURCES:.c=.o))
 
-all: $(OBJ) $(NAME)
+all: $(OBJ_FOLDER) $(NAME)
 
 $(OBJ_FOLDER):
 	mkdir -p $(OBJ_FOLDER)
@@ -27,7 +27,8 @@ $(NAME): $(OBJ)
 
 $(OBJ_FOLDER)%.o: %.c get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@ -I .
-	ar rc $(NAME) $@
+	ar rcs $(NAME) $@
 
-run_tests:
-	
+test: $(NAME)
+	@$(CC) $(CFLAGS) ./tests/project_test/mandatory/test_1.c $(NAME) -lbsd
+	@./a.out
