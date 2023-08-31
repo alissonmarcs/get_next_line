@@ -6,51 +6,92 @@
 #    By: almarcos <almarcos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/30 17:21:08 by almarcos          #+#    #+#              #
-#    Updated: 2023/08/31 14:00:56 by almarcos         ###   ########.fr        #
+#    Updated: 2023/08/31 16:47:20 by almarcos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libgnl.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
+GREEN = "\033[1;32m"
+RESET = "\033[0m"
+
 SOURCES = get_next_line.c get_next_line_utils.c
-OBJECTS_FOLDER = ./obj/
-OBJECTS = $(addprefix $(OBJECTS_FOLDER), $(SOURCES:.c=.o))
+BONUS_SOURCES = get_next_line_bonus.c get_next_line_utils_bonus.c
 
 SOURCES_TEST_FOLDER = ./tests/project_test/mandatory/
+SOURCES_TEST_BONUS_FOLDER = ./tests/project_test/bonus/
 
-SOURCES_TEST = $(SOURCES_TEST_FOLDER)test_1.c $(SOURCES_TEST_FOLDER)test_2.c \
-	$(SOURCES_TEST_FOLDER)test_3.c $(SOURCES_TEST_FOLDER)test_4.c \
-	$(SOURCES_TEST_FOLDER)test_5.c
-
-OBJECTS_FOLDER_TEST = $(addsuffix test/, $(OBJECTS_FOLDER))
-OBJECTS_TEST = $(subst $(SOURCES_TEST_FOLDER), $(OBJECTS_FOLDER_TEST), $(SOURCES_TEST:.c=.o))
-
-all: $(OBJECTS_FOLDER) $(OBJECTS_FOLDER_TEST) $(NAME)
+all: $(OBJECTS_FOLDER)
 
 $(OBJECTS_FOLDER):
 	mkdir -p $(OBJECTS_FOLDER)
 
-$(OBJECTS_FOLDER_TEST):
-	mkdir -p $(OBJECTS_FOLDER_TEST)
-
-$(NAME): $(OBJECTS)
-
-$(OBJECTS_FOLDER)%.o: %.c get_next_line.h
-	$(CC) $(CFLAGS) -c $< -o $@ -I .
-	ar rcs $(NAME) $@
-
-$(OBJECTS_FOLDER_TEST)%.o: $(SOURCES_TEST_FOLDER)%.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-test: $(NAME) $(OBJECTS_TEST)
-	@$(CC) $(CFLAGS) $(word 1, $(OBJECTS_TEST)) $(NAME) -lbsd
+test:
+	@echo $(GREEN)Mandatory$(RESET)
+	@echo $(GREEN)BUFFER_SIZE=1$(RESET)
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_1.c -D BUFFER_SIZE=1 -lbsd 
 	@./a.out
-	@$(CC) $(CFLAGS) $(word 2, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_2.c -D BUFFER_SIZE=1 -lbsd 
 	@./a.out
-	@$(CC) $(CFLAGS) $(word 3, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_3.c -D BUFFER_SIZE=1 -lbsd 
 	@./a.out
-	@$(CC) $(CFLAGS) $(word 4, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_4.c -D BUFFER_SIZE=1 -lbsd 
 	@./a.out
-	@$(CC) $(CFLAGS) $(word 5, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_5.c -D BUFFER_SIZE=1 -lbsd 
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=42$(RESET)
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_1.c -D BUFFER_SIZE=42 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_2.c -D BUFFER_SIZE=42 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_3.c -D BUFFER_SIZE=42 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_4.c -D BUFFER_SIZE=42 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_5.c -D BUFFER_SIZE=42 -lbsd 
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=3$(RESET)
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_1.c -D BUFFER_SIZE=3 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_2.c -D BUFFER_SIZE=3 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_3.c -D BUFFER_SIZE=3 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_4.c -D BUFFER_SIZE=3 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_5.c -D BUFFER_SIZE=3 -lbsd 
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=200$(RESET)
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_1.c -D BUFFER_SIZE=200 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_2.c -D BUFFER_SIZE=200 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_3.c -D BUFFER_SIZE=200 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_4.c -D BUFFER_SIZE=200 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_5.c -D BUFFER_SIZE=200 -lbsd 
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=999999$(RESET)
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_1.c -D BUFFER_SIZE=999999 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_2.c -D BUFFER_SIZE=999999 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_3.c -D BUFFER_SIZE=999999 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_4.c -D BUFFER_SIZE=999999 -lbsd 
+	@./a.out
+	@$(CC) $(CFLAGS) $(SOURCES) $(SOURCES_TEST_FOLDER)test_5.c -D BUFFER_SIZE=999999 -lbsd 
+	@./a.out
+
+bonus_test:
+	@echo $(GREEN)Bonus$(RESET)
+	@echo $(GREEN)BUFFER_SIZE=1$(RESET)
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_1.c -D BUFFER_SIZE=1 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=1 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=1 -lbsd -g -O0
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=1 -lbsd -g -O0
 	@./a.out
