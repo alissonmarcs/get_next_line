@@ -6,7 +6,7 @@
 #    By: almarcos <almarcos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/30 17:21:08 by almarcos          #+#    #+#              #
-#    Updated: 2023/08/31 16:47:20 by almarcos         ###   ########.fr        #
+#    Updated: 2023/08/31 18:18:02 by almarcos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,7 +91,43 @@ bonus_test:
 	@./a.out
 	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=1 -lbsd
 	@./a.out
-	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=1 -lbsd -g -O0
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=1 -lbsd
 	@./a.out
-	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=1 -lbsd -g -O0
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=1 -lbsd
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=13$(RESET)
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_1.c -D BUFFER_SIZE=13 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=13 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=13 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=13 -lbsd
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=200$(RESET)
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_1.c -D BUFFER_SIZE=200 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=200 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=200 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=200 -lbsd
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=3$(RESET)
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_1.c -D BUFFER_SIZE=3 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=3 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=3 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=3 -lbsd
+	@./a.out
+	@echo $(GREEN)BUFFER_SIZE=99999$(RESET)
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_1.c -D BUFFER_SIZE=99999 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_2.c -D BUFFER_SIZE=99999 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_3.c -D BUFFER_SIZE=3 -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(BONUS_SOURCES) $(SOURCES_TEST_BONUS_FOLDER)test_4.c -D BUFFER_SIZE=3 -lbsd
 	@./a.out
