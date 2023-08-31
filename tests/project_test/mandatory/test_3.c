@@ -6,8 +6,8 @@ int main()
 	int fd;
 	char *actual_result;
 
-	fd = open("../files/test_3.txt", O_RDONLY);
-	printf("test_3.c tries to read test_3.txt: ");
+	fd = open("./tests/project_test/files/test_3.txt", O_RDONLY);
+	printf("test_3.c attempt to read test_3.txt: ");
 
 	// assert
 	// first line of file with only '\n'
@@ -21,7 +21,7 @@ int main()
 	free(actual_result);
 
 	close(fd);
-	printf("%sall assertions passed\n\033[1;0m", GREEN);
+	printf("%sassertions passed%s\n", GREEN, RESET);
 
 	return (0);
 }

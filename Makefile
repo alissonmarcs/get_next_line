@@ -6,29 +6,51 @@
 #    By: almarcos <almarcos@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/08/30 17:21:08 by almarcos          #+#    #+#              #
-#    Updated: 2023/08/30 17:24:38 by almarcos         ###   ########.fr        #
+#    Updated: 2023/08/31 14:00:56 by almarcos         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libgnl.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-OBJ_FOLDER = ./obj/
 SOURCES = get_next_line.c get_next_line_utils.c
+OBJECTS_FOLDER = ./obj/
+OBJECTS = $(addprefix $(OBJECTS_FOLDER), $(SOURCES:.c=.o))
 
-OBJ = $(addprefix $(OBJ_FOLDER), $(SOURCES:.c=.o))
+SOURCES_TEST_FOLDER = ./tests/project_test/mandatory/
 
-all: $(OBJ_FOLDER) $(NAME)
+SOURCES_TEST = $(SOURCES_TEST_FOLDER)test_1.c $(SOURCES_TEST_FOLDER)test_2.c \
+	$(SOURCES_TEST_FOLDER)test_3.c $(SOURCES_TEST_FOLDER)test_4.c \
+	$(SOURCES_TEST_FOLDER)test_5.c
 
-$(OBJ_FOLDER):
-	mkdir -p $(OBJ_FOLDER)
+OBJECTS_FOLDER_TEST = $(addsuffix test/, $(OBJECTS_FOLDER))
+OBJECTS_TEST = $(subst $(SOURCES_TEST_FOLDER), $(OBJECTS_FOLDER_TEST), $(SOURCES_TEST:.c=.o))
 
-$(NAME): $(OBJ)
+all: $(OBJECTS_FOLDER) $(OBJECTS_FOLDER_TEST) $(NAME)
 
-$(OBJ_FOLDER)%.o: %.c get_next_line.h
+$(OBJECTS_FOLDER):
+	mkdir -p $(OBJECTS_FOLDER)
+
+$(OBJECTS_FOLDER_TEST):
+	mkdir -p $(OBJECTS_FOLDER_TEST)
+
+$(NAME): $(OBJECTS)
+
+$(OBJECTS_FOLDER)%.o: %.c get_next_line.h
 	$(CC) $(CFLAGS) -c $< -o $@ -I .
 	ar rcs $(NAME) $@
 
-test: $(NAME)
-	@$(CC) $(CFLAGS) ./tests/project_test/mandatory/test_1.c $(NAME) -lbsd
+$(OBJECTS_FOLDER_TEST)%.o: $(SOURCES_TEST_FOLDER)%.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+test: $(NAME) $(OBJECTS_TEST)
+	@$(CC) $(CFLAGS) $(word 1, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(word 2, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(word 3, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(word 4, $(OBJECTS_TEST)) $(NAME) -lbsd
+	@./a.out
+	@$(CC) $(CFLAGS) $(word 5, $(OBJECTS_TEST)) $(NAME) -lbsd
 	@./a.out

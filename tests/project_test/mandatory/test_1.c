@@ -1,9 +1,4 @@
-#include "../../../get_next_line.h"
-
-#include <assert.h>
-#include <bsd/string.h>
-#include <fcntl.h>
-#include <stdio.h>
+#include "../../tests.h"
 
 int main()
 {
@@ -14,7 +9,7 @@ int main()
 
 	fd = open("./tests/project_test/files/test_1.txt", O_RDONLY);
 
-	printf("test_1.c tries to read test_1.txt: ");
+	printf("test_1.c attempt to read test_1.txt: ");
 
 	// asserts
 
@@ -73,7 +68,7 @@ int main()
 
 	close(fd);
 
-	printf("\033[1;32mall assertions passed\n\033[1;0m");
+	printf("%sassertions passed%s\n", GREEN, RESET);
 
 	return (0);
 }

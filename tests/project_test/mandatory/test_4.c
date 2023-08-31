@@ -6,8 +6,8 @@ int main()
 	char expected_result[100];
 	char *actual_result;
 
-	fd = open("../files/test_4.txt", O_RDONLY);
-	printf("test_4.c tries to read test_4.txt: ");
+	fd = open("./tests/project_test/files/test_4.txt", O_RDONLY);
+	printf("test_4.c attempt to read test_4.txt: ");
 
 	actual_result = get_next_line(fd);
 	strlcpy(expected_result, "unit test!!\n", sizeof expected_result);
@@ -24,7 +24,7 @@ int main()
 	free(actual_result);
 
 	close(fd);
-	printf("%sall assertions passed\n\033[1;0m", GREEN);
+	printf("%sassertions passed%s\n", GREEN, RESET);
 
 	return (0);
 }
